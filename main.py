@@ -29,7 +29,7 @@ email_label.grid(row=2, column=0, padx=10, pady=10)
 email_entry = tk.Entry(root, width=30)
 email_entry.grid(row=2, column=1, padx=10, pady=10)
 
-# List pf contacts
+# List of contacts
 contacts = []
 
 # Fuctions
@@ -44,6 +44,17 @@ def add_contact():
 
     listbox.insert(tk.END, contact["name"])
 
+def delete_contact():
+    if not listbox.curselection():
+        return
+
+    index = listbox.curselection()[0]
+
+    contacts.pop(index)
+    listbox.delete(index)
+    name_entry.delete(0, tk.END)
+    phone_entry.delete(0, tk.END)
+    email_entry.delete(0, tk.END)
 
 def show_contact(event):
     index = listbox.curselection()[0]
@@ -56,18 +67,17 @@ def show_contact(event):
     name_entry.insert(0, contact["name"])
     phone_entry.insert(0, contact["phone"])
     email_entry.insert(0, contact["email"])
-    
+
+    delete_button = tk.Button(root, text="Delete Contact",command=delete_contact)
+    delete_button.grid(row=5, column=1, pady=15)
+
 
 # Save button
 save_button = tk.Button(root, text="Add Contact",command=add_contact)
 save_button.grid(row=3, column=1, pady=15)
 
-#why i use grid? = because it works for me given that its propierties are good for my from
-#row is the fila and column is the columna hahah, i mean is where are in the position.
-#padx = padding for x and pady for y
 
 # The listbox for the contacts
-
 listbox = tk.Listbox(root, width=25, height=8)
 listbox.grid(row=4, column=1,)
 
