@@ -32,7 +32,7 @@ email_entry.grid(row=2, column=1, padx=10, pady=10)
 # List pf contacts
 contacts = []
 
-# Fuction
+# Fuctions
 def add_contact():
     contact = {
         "name": name_entry.get(),
@@ -44,6 +44,19 @@ def add_contact():
 
     listbox.insert(tk.END, contact["name"])
 
+
+def show_contact(event):
+    index = listbox.curselection()[0]
+    contact = contacts[index]
+
+    name_entry.delete(0, tk.END)
+    phone_entry.delete(0, tk.END)
+    email_entry.delete(0, tk.END)
+
+    name_entry.insert(0, contact["name"])
+    phone_entry.insert(0, contact["phone"])
+    email_entry.insert(0, contact["email"])
+    
 
 # Save button
 save_button = tk.Button(root, text="Add Contact",command=add_contact)
@@ -58,6 +71,7 @@ save_button.grid(row=3, column=1, pady=15)
 listbox = tk.Listbox(root, width=25, height=8)
 listbox.grid(row=4, column=1,)
 
-
+# Connect to fuction
+listbox.bind("<<ListboxSelect>>", show_contact)
 
 root.mainloop()
