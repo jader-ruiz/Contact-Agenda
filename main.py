@@ -26,13 +26,28 @@ phone_entry.grid(row=1, column=1, padx=10, pady=10)
 email_label = tk.Label(root, text="Email:")
 email_label.grid(row=2, column=0, padx=10, pady=10)
 
-email_entry = tk.Entry(root, width=30).grid(row=2, column=1, padx=10, pady=10)
+email_entry = tk.Entry(root, width=30)
+email_entry.grid(row=2, column=1, padx=10, pady=10)
+
+# List pf contacts
+contacts = []
+
+# Fuction
+def add_contact():
+    contact = {
+        "name": name_entry.get(),
+        "phone": phone_entry.get(),
+        "email": email_entry.get()
+    }
+
+    contacts.append(contact)
+
+    listbox.insert(tk.END, contact["name"])
 
 
 # Save button
-save_button = tk.Button(root, text="Add Contact",)
+save_button = tk.Button(root, text="Add Contact",command=add_contact)
 save_button.grid(row=3, column=1, pady=15)
-
 
 #why i use grid? = because it works for me given that its propierties are good for my from
 #row is the fila and column is the columna hahah, i mean is where are in the position.
@@ -42,9 +57,6 @@ save_button.grid(row=3, column=1, pady=15)
 
 listbox = tk.Listbox(root, width=25, height=8)
 listbox.grid(row=4, column=1,)
-listbox.insert(tk.END, "John")
-listbox.insert(tk.END, "Alice")
-listbox.insert(tk.END, "Bob")
 
 
 
