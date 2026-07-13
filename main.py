@@ -30,12 +30,22 @@ email_entry = tk.Entry(root, width=30).grid(row=2, column=1, padx=10, pady=10)
 
 
 # Save button
-save_button = tk.Button(root, text="Add Contact")
-save_button.grid(row=3, column=0, pady=15)
+save_button = tk.Button(root, text="Add Contact",)
+save_button.grid(row=3, column=1, pady=15)
 
 
 #why i use grid? = because it works for me given that its propierties are good for my from
 #row is the fila and column is the columna hahah, i mean is where are in the position.
 #padx = padding for x and pady for y
+
+# The listbox for the contacts
+
+listbox = tk.Listbox(root, width=25, height=8)
+listbox.grid(row=4, column=1,)
+listbox.insert(tk.END, "John")
+listbox.insert(tk.END, "Alice")
+listbox.insert(tk.END, "Bob")
+
+
 
 root.mainloop()
