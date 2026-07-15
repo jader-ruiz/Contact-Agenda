@@ -17,7 +17,7 @@ main_title.grid(row=0, column=1, pady=5, padx=10)
 
 # The listbox for the contacts
 listbox = tk.Listbox(root, width=25, height=8,)
-listbox.grid(row=4, column=1,)
+listbox.grid(row=2, column=1,)
 contacts = []
 
 # Open other window of add contact
@@ -82,7 +82,7 @@ def open_add():
 
 # Add contact button
 add_button = tk.Button(root, text="Add Contact",command=open_add)
-add_button.grid(row=2, column=1, pady=10)
+add_button.grid(row=3, column=1, pady=10)
 
 root.mainloop()
 
