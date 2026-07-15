@@ -12,7 +12,7 @@ fill_of_nothing = tk.Label(root, text="")
 fill_of_nothing.grid(row=0, column=0, padx=15)
 
 # Main title
-main_title = tk.Label(root, text="Contactos")
+main_title = tk.Label(root, text="Contacts")
 main_title.grid(row=0, column=1, pady=5, padx=10)
 
 # The listbox for the contacts
@@ -159,6 +159,5 @@ def open_edit():
 edit_button = tk.Button(root, text="Edit Contact",command=open_edit)
 edit_button.grid(row=4, column=1, pady=5)
 
-root.mainloop()
 
 root.mainloop()
