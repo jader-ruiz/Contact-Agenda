@@ -160,4 +160,20 @@ edit_button = tk.Button(root, text="Edit Contact",command=open_edit)
 edit_button.grid(row=4, column=1, pady=5)
 
 
+# Fuction of delete contact
+def delete():
+    if not listbox.curselection():
+        return
+
+    index = listbox.curselection()[0]
+
+    contacts.pop(index)
+    listbox.delete(index)
+
+# Delete contact button
+delete_button = tk.Button(root, text="Delete Contact",command=delete)
+delete_button.grid(row=5, column=1, pady=5)
+
+
+
 root.mainloop()
