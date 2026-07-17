@@ -33,7 +33,11 @@ def load_contacts():
         listbox.insert(tk.END, name)
     return contacts
 
-contacts = load_contacts()
+try:
+    contacts = load_contacts()
+except FileNotFoundError:
+    contacts = []
+    print("contacts.json was not found. Starting with an empty contact list.")
 
 
 # Open other window of add contact
