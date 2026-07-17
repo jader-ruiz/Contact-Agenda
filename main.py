@@ -68,6 +68,10 @@ def open_add():
         contacts.append(contact)
         listbox.insert(tk.END, name)
 
+        name_entry.delete(0, tk.END)
+        phone_entry.delete(0, tk.END)
+        email_entry.delete(0, tk.END)   
+
     # Save button of add contact
     save_button = tk.Button(
     add,
