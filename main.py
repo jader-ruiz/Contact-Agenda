@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
+import json
 
 root = tk.Tk()
 
@@ -18,7 +19,22 @@ main_title.grid(row=0, column=1, pady=5, padx=10)
 # The listbox for the contacts
 listbox = tk.Listbox(root, width=25, height=8,)
 listbox.grid(row=2, column=1,)
-contacts = []
+
+# .json
+def save_contacts():
+    with open("contacts.json", "w") as file:
+        json.dump(contacts, file, indent=4)
+
+def load_contacts():
+    with open("contacts.json") as file:
+        contacts = json.load(file)
+    for contact in contacts:
+        name = contact["name"]
+        listbox.insert(tk.END, name)
+    return contacts
+
+contacts = load_contacts()
+
 
 # Open other window of add contact
 def open_add():
@@ -83,6 +99,8 @@ def open_add():
     
         contacts.append(contact)
         listbox.insert(tk.END, name)
+
+        save_contacts()
 
         name_entry.delete(0, tk.END)
         phone_entry.delete(0, tk.END)
@@ -180,6 +198,8 @@ def open_edit():
         contact["phone"] = phone
         contact["email"] = email
 
+        save_contacts()
+
         listbox.delete(index)
         listbox.insert(index, contact["name"])
         
@@ -203,6 +223,9 @@ def delete():
     index = listbox.curselection()[0]
 
     contacts.pop(index)
+
+    save_contacts()
+
     listbox.delete(index)
 
 # Delete contact button
