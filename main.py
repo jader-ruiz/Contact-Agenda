@@ -58,6 +58,22 @@ def open_add():
             )
             add.destroy()
             return
+        
+        if not phone.isdigit():
+            messagebox.showwarning(
+            "Invalid Phone",
+            "The phone number must contain only numbers."
+            )
+            add.destroy()
+            return
+        
+        if "@" not in email or "." not in email:
+            messagebox.showwarning(
+                "Invalid Email",
+                "Please enter a valid email address."
+            )
+            add.destroy()
+            return
     
         contact = {
         "name": name,
@@ -141,6 +157,21 @@ def open_edit():
             messagebox.showwarning(
                 "Missing Information",
                 "Please fill in all fields."
+            )
+            edit.destroy()
+            return
+        if not phone.isdigit():
+            messagebox.showwarning(
+            "Invalid Phone",
+            "The phone number must contain only numbers."
+            )
+            edit.destroy()
+            return
+        
+        if "@" not in email or "." not in email:
+            messagebox.showwarning(
+                "Invalid Email",
+                "Please enter a valid email address."
             )
             edit.destroy()
             return
