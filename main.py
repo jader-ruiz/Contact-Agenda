@@ -5,20 +5,28 @@ import json
 root = tk.Tk()
 
 root.title("Contact Agenda")
-root.geometry("700x500")
+root.geometry("500x350")
 root.resizable(False, False)
+root.configure(bg="#787c82")
 
 # Filled 
-fill_of_nothing = tk.Label(root, text="")
+fill_of_nothing = tk.Label(root, text="",bg="#787c82")
 fill_of_nothing.grid(row=0, column=0, padx=15)
 
 # Main title
-main_title = tk.Label(root, text="Contacts")
+main_title = tk.Label(root, text="Contacts",font=("Arial", 12, "bold",),bg="#787c82")
 main_title.grid(row=0, column=1, pady=5, padx=10)
 
 # The listbox for the contacts
-listbox = tk.Listbox(root, width=25, height=8,)
-listbox.grid(row=2, column=1,)
+listbox = tk.Listbox(root, width=25, height=8,font=("Arial", 11),
+    bg="white",
+    fg="#333333",
+    selectbackground="#4CAF50",
+    selectforeground="white",
+    relief="flat")
+
+
+listbox.grid(row=2, column=1,pady=5)
 
 # .json
 def save_contacts():
@@ -45,25 +53,26 @@ def open_add():
     add = tk.Toplevel(root)
     add.title("Add New Contact")
     add.geometry("300x200")
-    root.resizable(False, False)
+    add.resizable(False, False)
+    add.configure(bg="#787c82")
 
     # Name 
-    name_label = tk.Label(add, text="Name:")
-    name_label.grid(row=0, column=0, padx=10, pady=10) 
+    name_label = tk.Label(add, text="Name:",font=("Arial", 12,"bold"),bg="#787c82")
+    name_label.grid(row=0, column=0, padx=5, pady=5) 
     name_entry = tk.Entry(add, width=30)
-    name_entry.grid(row=0, column=1, padx=10, pady=10)
+    name_entry.grid(row=0, column=1, padx=5, pady=5)
 
     # Phone
-    phone_label = tk.Label(add, text="Phone:")
-    phone_label.grid(row=1, column=0, padx=10, pady=10)
+    phone_label = tk.Label(add, text="Phone:",font=("Arial", 12,"bold"),bg="#787c82")
+    phone_label.grid(row=1, column=0, padx=5, pady=5)
     phone_entry = tk.Entry(add, width=30)
-    phone_entry.grid(row=1, column=1, padx=10, pady=10)
+    phone_entry.grid(row=1, column=1, padx=5, pady=5)
 
     # Email
-    email_label = tk.Label(add, text="Email:")
-    email_label.grid(row=2, column=0, padx=10, pady=10)
+    email_label = tk.Label(add, text="Email:",font=("Arial", 12,"bold"),bg="#787c82")
+    email_label.grid(row=2, column=0, padx=5, pady=5)
     email_entry = tk.Entry(add, width=30)
-    email_entry.grid(row=2, column=1, padx=10, pady=10)
+    email_entry.grid(row=2, column=1, padx=5, pady=5)
 
     # Add contact fuction
     def add_contact():
@@ -113,18 +122,17 @@ def open_add():
     # Save button of add contact
     save_button = tk.Button(
     add,
-    text="Save",
-    command=add_contact
-    )
+    text="✅ Save",
+    command=add_contact,bg="#4CAF50",fg="white",width=15)
     save_button.grid(row=3, column=1, pady=10)
 
     # Close button
-    close_button = tk.Button(add, text="Close", command=add.destroy)
+    close_button = tk.Button(add, text="❌ Close", command=add.destroy,bg="#FF1500",fg="white",width=15)
     close_button.grid(row=4, column=1)
 
 # Add contact button
-add_button = tk.Button(root, text="Add Contact",command=open_add)
-add_button.grid(row=3, column=1, pady=10)
+add_button = tk.Button(root, text="➕ Add Contact",command=open_add,bg="#4CAF50",fg="white",width=15)
+add_button.grid(row=3, column=1, pady=5)
 
 
 # Open other window of edit contact
@@ -139,24 +147,25 @@ def open_edit():
     edit.title("Edit Contact")
     edit.geometry("300x200")
     edit.resizable(False, False)
+    edit.configure(bg="#787c82")
 
     # Name 
-    name_label = tk.Label(edit, text="Name:")
-    name_label.grid(row=0, column=0, padx=10, pady=10) 
+    name_label = tk.Label(edit, text="Name:",font=("Arial", 12,"bold"),bg="#787c82")
+    name_label.grid(row=0, column=0, padx=5, pady=5) 
     name_entry = tk.Entry(edit, width=30)
-    name_entry.grid(row=0, column=1, padx=10, pady=10)
+    name_entry.grid(row=0, column=1, padx=5, pady=5)
 
     # Phone
-    phone_label = tk.Label(edit, text="Phone:")
-    phone_label.grid(row=1, column=0, padx=10, pady=10)
+    phone_label = tk.Label(edit, text="Phone:",font=("Arial", 12,"bold"),bg="#787c82")
+    phone_label.grid(row=1, column=0, padx=5, pady=5)
     phone_entry = tk.Entry(edit, width=30)
-    phone_entry.grid(row=1, column=1, padx=10, pady=10)
+    phone_entry.grid(row=1, column=1, padx=5, pady=5)
 
     # Email
-    email_label = tk.Label(edit, text="Email:")
-    email_label.grid(row=2, column=0, padx=10, pady=10)
+    email_label = tk.Label(edit, text="Email:",font=("Arial", 12,"bold"),bg="#787c82")
+    email_label.grid(row=2, column=0, padx=5, pady=5)
     email_entry = tk.Entry(edit, width=30)
-    email_entry.grid(row=2, column=1, padx=10, pady=10)
+    email_entry.grid(row=2, column=1, padx=5, pady=5)
 
     index = listbox.curselection()[0]
     contact = contacts[index]
@@ -167,7 +176,7 @@ def open_edit():
 
 
     # Close button
-    close_button = tk.Button(edit, text="Close", command=edit.destroy)
+    close_button = tk.Button(edit,text="❌ Close", command=edit.destroy,bg="#FF1500",fg="white",width=15)
     close_button.grid(row=4, column=1)
     
     def save_edit():
@@ -210,12 +219,13 @@ def open_edit():
         edit.destroy()
     
     # Save button
-    save_button = tk.Button(edit, text="Save",command=save_edit)
-    save_button.grid(row=5, column=1, pady=2)
+    save_button = tk.Button(edit, text="✅ Save",
+    command=save_edit,bg="#4CAF50",fg="white",width=15)
+    save_button.grid(row=3, column=1, pady=2)
     
 
 # Edit contact button
-edit_button = tk.Button(root, text="Edit Contact",command=open_edit)
+edit_button = tk.Button(root, text="✏️ Edit Contact",command=open_edit,bg="#2196F3",fg="white",width=15)
 edit_button.grid(row=4, column=1, pady=5)
 
 
@@ -233,7 +243,7 @@ def delete():
     listbox.delete(index)
 
 # Delete contact button
-delete_button = tk.Button(root, text="Delete Contact",command=delete)
+delete_button = tk.Button(root, text="✂️ Delete Contact",command=delete,bg="#F44336",fg="white",width=15)
 delete_button.grid(row=5, column=1, pady=5)
 
 
