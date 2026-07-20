@@ -29,7 +29,7 @@ main_title = tk.Label(header_frame, text="Contacts Agenda",font=("Arial", 12, "b
 main_title.pack(pady=5)
 
 
-listbox_title = tk.Label(left_frame, text="Contacts",font=("Arial", 12))
+listbox_title = tk.Label(left_frame, text="Contacts",font=("Arial", 12),bg="#F5F7FA")
 listbox_title.grid(row=0, column=1,pady=5)
 # The listbox for the contacts
 listbox = tk.Listbox(left_frame, width=25, height=8,font=("Arial", 11),
@@ -41,23 +41,34 @@ listbox = tk.Listbox(left_frame, width=25, height=8,font=("Arial", 11),
 listbox.grid(row=1, column=1,pady=5)
 
 # Contact Information
-title_information = tk.Label(right_frame, text="Contact Information",font=("Arial",12))
-title_information.grid(row=0,column=1,pady=20)
+title_information = tk.Label(right_frame, text="Contact Information",font=("Arial",12),bg="#F5F7FA")
+title_information.grid(row=0,column=0,pady=20)
 
-name_title = tk.Label(right_frame, text="Name:", font=("Arial", 12, "bold"))
+name_title = tk.Label(right_frame, text="Name:", font=("Arial", 12, "bold"),bg="#F5F7FA")
 name_title.grid(row=1, column=0, sticky="w")
-name_value = tk.Label(right_frame, text="")
+name_value = tk.Label(right_frame, text="",bg="#F5F7FA")
 name_value.grid(row=1, column=1, sticky="w")
 
-phone_title = tk.Label(right_frame, text="Phone:", font=("Arial", 12, "bold"))
+phone_title = tk.Label(right_frame, text="Phone:", font=("Arial", 12, "bold"),bg="#F5F7FA")
 phone_title.grid(row=2, column=0, sticky="w")
-phone_value = tk.Label(right_frame, text="")
+phone_value = tk.Label(right_frame, text="",bg="#F5F7FA")
 phone_value.grid(row=2, column=1, sticky="w")
 
-email_title = tk.Label(right_frame, text="Email:", font=("Arial", 12, "bold"))
+email_title = tk.Label(right_frame, text="Email:", font=("Arial", 12, "bold"),bg="#F5F7FA")
 email_title.grid(row=3, column=0, sticky="w")
-email_value = tk.Label(right_frame, text="")
+email_value = tk.Label(right_frame, text="",bg="#F5F7FA")
 email_value.grid(row=3, column=1, sticky="w")
+
+# Fuction contact information
+def show_contact(event):
+    index = listbox.curselection()[0]
+    contact = contacts[index]
+
+    name_value.config(text=contact["name"])
+    phone_value.config(text=contact["phone"])
+    email_value.config(text=contact["email"])
+
+listbox.bind("<<ListboxSelect>>", show_contact)
 
 
 # .json
