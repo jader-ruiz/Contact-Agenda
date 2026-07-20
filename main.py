@@ -254,6 +254,10 @@ def open_edit():
         contact["phone"] = phone
         contact["email"] = email
 
+        name_value.config(text=name)
+        phone_value.config(text=phone)
+        email_value.config(text=email)
+
         save_contacts()
 
         listbox.delete(index)
