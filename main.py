@@ -5,43 +5,60 @@ import json
 root = tk.Tk()
 
 root.title("Contact Agenda")
-root.geometry("500x350")
+root.geometry("700x500")
 root.resizable(False, False)
-root.configure(bg="#787c82")
 
-header_frame = tk.Frame(root)
+header_frame = tk.Frame(root,bg="#2C3E50")
 header_frame.pack(fill="x")
 
-content_frame = tk.Frame(root)
+content_frame = tk.Frame(root,bg="#F5F7FA")
 content_frame.pack(fill="both", expand=True)
 
-left_frame = tk.Frame(content_frame)
+left_frame = tk.Frame(content_frame,bg="#F5F7FA")
 left_frame.pack(side="left", padx=20)
 
-right_frame = tk.Frame(content_frame)
+right_frame = tk.Frame(content_frame,bg="#F5F7FA")
 right_frame.pack(side="right", padx=20)
 
-button_frame = tk.Frame(root)
+button_frame = tk.Frame(root,bg="#2C2F33")
 button_frame.pack(fill="x")
 
-# Filled 
-fill_of_nothing = tk.Label(root, text="",bg="#787c82")
-fill_of_nothing.grid(row=0, column=0, padx=15)
 
 # Main title
-main_title = tk.Label(root, text="Contacts",font=("Arial", 12, "bold",),bg="#787c82")
-main_title.grid(row=0, column=1, pady=5, padx=10)
+main_title = tk.Label(header_frame, text="Contacts Agenda",font=("Arial", 12, "bold",),bg="#2C3E50",fg="white")
+main_title.pack(pady=5)
 
+
+listbox_title = tk.Label(left_frame, text="Contacts",font=("Arial", 12))
+listbox_title.grid(row=0, column=1,pady=5)
 # The listbox for the contacts
-listbox = tk.Listbox(root, width=25, height=8,font=("Arial", 11),
+listbox = tk.Listbox(left_frame, width=25, height=8,font=("Arial", 11),
     bg="white",
     fg="#333333",
     selectbackground="#4CAF50",
     selectforeground="white",
     relief="flat")
+listbox.grid(row=1, column=1,pady=5)
 
+# Contact Information
+title_information = tk.Label(right_frame, text="Contact Information",font=("Arial",12))
+title_information.grid(row=0,column=1,pady=20)
 
-listbox.grid(row=2, column=1,pady=5)
+name_title = tk.Label(right_frame, text="Name:", font=("Arial", 12, "bold"))
+name_title.grid(row=1, column=0, sticky="w")
+name_value = tk.Label(right_frame, text="")
+name_value.grid(row=1, column=1, sticky="w")
+
+phone_title = tk.Label(right_frame, text="Phone:", font=("Arial", 12, "bold"))
+phone_title.grid(row=2, column=0, sticky="w")
+phone_value = tk.Label(right_frame, text="")
+phone_value.grid(row=2, column=1, sticky="w")
+
+email_title = tk.Label(right_frame, text="Email:", font=("Arial", 12, "bold"))
+email_title.grid(row=3, column=0, sticky="w")
+email_value = tk.Label(right_frame, text="")
+email_value.grid(row=3, column=1, sticky="w")
+
 
 # .json
 def save_contacts():
@@ -146,8 +163,8 @@ def open_add():
     close_button.grid(row=4, column=1)
 
 # Add contact button
-add_button = tk.Button(root, text="➕ Add Contact",command=open_add,bg="#4CAF50",fg="white",width=15)
-add_button.grid(row=3, column=1, pady=5)
+add_button = tk.Button(button_frame, text="➕ Add Contact",command=open_add,bg="#4CAF50",fg="white",width=15)
+add_button.pack(padx=5,pady=5)
 
 
 # Open other window of edit contact
@@ -240,8 +257,8 @@ def open_edit():
     
 
 # Edit contact button
-edit_button = tk.Button(root, text="✏️ Edit Contact",command=open_edit,bg="#2196F3",fg="white",width=15)
-edit_button.grid(row=4, column=1, pady=5)
+edit_button = tk.Button(button_frame, text="✏️ Edit Contact",command=open_edit,bg="#2196F3",fg="white",width=15)
+edit_button.pack(padx=5,pady=5)
 
 
 # Fuction of delete contact
@@ -258,8 +275,8 @@ def delete():
     listbox.delete(index)
 
 # Delete contact button
-delete_button = tk.Button(root, text="✂️ Delete Contact",command=delete,bg="#F44336",fg="white",width=15)
-delete_button.grid(row=5, column=1, pady=5)
+delete_button = tk.Button(button_frame, text="✂️ Delete Contact",command=delete,bg="#F44336",fg="white",width=15)
+delete_button.pack(padx=5,pady=5)
 
 
 
