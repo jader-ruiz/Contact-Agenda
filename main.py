@@ -9,6 +9,21 @@ root.geometry("500x350")
 root.resizable(False, False)
 root.configure(bg="#787c82")
 
+header_frame = tk.Frame(root)
+header_frame.pack(fill="x")
+
+content_frame = tk.Frame(root)
+content_frame.pack(fill="both", expand=True)
+
+left_frame = tk.Frame(content_frame)
+left_frame.pack(side="left", padx=20)
+
+right_frame = tk.Frame(content_frame)
+right_frame.pack(side="right", padx=20)
+
+button_frame = tk.Frame(root)
+button_frame.pack(fill="x")
+
 # Filled 
 fill_of_nothing = tk.Label(root, text="",bg="#787c82")
 fill_of_nothing.grid(row=0, column=0, padx=15)
